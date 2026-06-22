@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>墨韵轩 - 书法学习与作品集</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 水墨背景装饰 -->
+  <div class="ink-bg"></div>
+
+  <!-- 侧边导航 -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-seal">墨</div>
+      <span class="logo-text">墨韵轩</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" class="nav-link active" data-page="home"><span class="nav-icon">🏠</span> 首页</a></li>
+      <li><a href="#" class="nav-link" data-page="learn"><span class="nav-icon">📖</span> 学书法</a></li>
+      <li><a href="#" class="nav-link" data-page="gallery"><span class="nav-icon">🖼️</span> 作品集</a></li>
+      <li><a href="#" class="nav-link" data-page="about"><span class="nav-icon">👤</span> 关于</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <p>翰墨飘香 · 笔耕不辍</p>
+    </div>
+  </nav>
+
+  <!-- 移动端汉堡菜单 -->
+  <button class="hamburger" id="hamburger" aria-label="菜单">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- 主内容区域 -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ========== 首页 ========== -->
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-brush"></div>
+        <h1 class="hero-title">墨韵轩</h1>
+        <p class="hero-subtitle">书法 · 静心 · 传承</p>
+        <p class="hero-desc">以笔墨会友，于方寸之间见天地</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary" data-nav="learn">开始学书法</a>
+          <a href="#" class="btn btn-outline" data-nav="gallery">浏览作品</a>
+        </div>
+      </div>
+
+      <!-- 快速入口卡片 -->
+      <div class="quick-cards">
+        <div class="card" onclick="navigateTo('learn')">
+          <div class="card-icon">📖</div>
+          <h3>学书法</h3>
+          <p>楷行草隶篆，入门到精通</p>
+        </div>
+        <div class="card" onclick="navigateTo('gallery')">
+          <div class="card-icon">🖼️</div>
+          <h3>作品集</h3>
+          <p>记录每一幅心血之作</p>
+        </div>
+        <div class="card" onclick="navigateTo('about')">
+          <div class="card-icon">👤</div>
+          <h3>关于我</h3>
+          <p>我的书法之路</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 学书法 ========== -->
+    <section class="page" id="page-learn">
+      <h2 class="page-title"><span class="title-deco">📖</span> 学书法</h2>
+      <p class="page-subtitle">五体入门 · 经典名帖 · 习字心法</p>
+
+      <!-- 书体标签切换 -->
+      <div class="tab-bar" id="scriptTabs">
+        <button class="tab active" data-script="all">全部</button>
+        <button class="tab" data-script="楷书">楷书</button>
+        <button class="tab" data-script="行书">行书</button>
+        <button class="tab" data-script="草书">草书</button>
+        <button class="tab" data-script="隶书">隶书</button>
+        <button class="tab" data-script="篆书">篆书</button>
+      </div>
+
+      <div class="learn-grid" id="learnGrid">
+        <!-- 由 JS 动态渲染 -->
+      </div>
+
+      <div class="tip-section">
+        <h3>💡 习字心法</h3>
+        <ul class="tip-list">
+          <li><strong>先楷后行：</strong>楷书如站立，行书如行走，草书如奔跑。打好楷书基础再求变化。</li>
+          <li><strong>临摹结合：</strong>先摹后临，摹求形似，临求神似。每日不辍，必有长进。</li>
+          <li><strong>读帖为先：</strong>下笔之前先读帖，仔细观察每个字的笔法、结构、章法。</li>
+          <li><strong>笔墨纸砚：</strong>工欲善其事，必先利其器。选趁手的文房四宝很重要。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== 作品集 ========== -->
+    <section class="page" id="page-gallery">
+      <h2 class="page-title"><span class="title-deco">🖼️</span> 作品集</h2>
+      <p class="page-subtitle">记录每一幅心血之作</p>
+
+      <div class="gallery-toolbar">
+        <button class="btn btn-primary" id="addWorkBtn">✚ 上传新作品</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="empty-state" id="emptyGallery">
+          <div class="empty-icon">🖌️</div>
+          <h3>还没有作品</h3>
+          <p>点击上方按钮上传您的第一幅书法作品吧</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 关于 ========== -->
+    <section class="page" id="page-about">
+      <h2 class="page-title"><span class="title-deco">👤</span> 关于</h2>
+      <div class="about-container">
+        <div class="about-avatar">
+          <div class="avatar-placeholder">墨</div>
+        </div>
+        <div class="about-content">
+          <h3>我的书法之路</h3>
+          <div class="about-bio" contenteditable="true" id="aboutBio">
+            自幼喜爱书法，临池不辍。钟情于楷书的端庄严正，亦醉心于行书的行云流水。书法于我，不仅是技艺的修炼，更是心灵的栖居。愿与同好共赏翰墨之美，在笔墨纸砚间寻得一份宁静与自在。
+          </div>
+          <p class="about-hint">✏️ 点击上面文字可编辑个人简介</p>
+        </div>
+      </div>
+
+      <!-- 书友留言 -->
+      <div class="comments-section">
+        <h3>💬 书友留言</h3>
+        <div class="comment-form">
+          <input type="text" id="commentName" placeholder="您的称呼" class="form-input">
+          <textarea id="commentContent" placeholder="写下想说的话..." class="form-textarea" rows="3"></textarea>
+          <div class="comment-stars">
+            <span>评分：</span>
+            <div class="star-rating" id="starRating">
+              <span class="star" data-value="1">☆</span>
+              <span class="star" data-value="2">☆</span>
+              <span class="star" data-value="3">☆</span>
+              <span class="star" data-value="4">☆</span>
+              <span class="star" data-value="5">☆</span>
+            </div>
+            <span class="rating-text" id="ratingText">请评分</span>
+          </div>
+          <button class="btn btn-primary" id="submitComment">发表留言</button>
+        </div>
+        <div class="comment-list" id="commentList">
+          <div class="empty-state-sm">暂无留言，快来写第一条吧～</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== 上传/编辑作品弹窗 ========== -->
+  <div class="modal-overlay" id="workModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h3 id="modalTitle">上传新作品</h3>
+      <form id="workForm">
+        <div class="form-group">
+          <label>作品照片</label>
+          <div class="upload-area" id="uploadArea">
+            <input type="file" accept="image/*" id="imageInput" hidden>
+            <div class="upload-placeholder" id="uploadPlaceholder">
+              <span class="upload-icon">📷</span>
+              <p>点击上传照片</p>
+            </div>
+            <img id="imagePreview" class="image-preview hidden" alt="预览">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>作品名称</label>
+          <input type="text" id="workTitle" placeholder="如：临《兰亭序》" class="form-input" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>书体</label>
+            <select id="workScript" class="form-input">
+              <option value="楷书">楷书</option>
+              <option value="行书">行书</option>
+              <option value="草书">草书</option>
+              <option value="隶书">隶书</option>
+              <option value="篆书">篆书</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>创作日期</label>
+            <input type="date" id="workDate" class="form-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>创作感言</label>
+          <textarea id="workNote" placeholder="写下创作时的心境或想说的话..." class="form-textarea" rows="3"></textarea>
+        </div>
+        <input type="hidden" id="editId" value="">
+        <button type="submit" class="btn btn-primary btn-full">保存作品</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== 作品详情弹窗 ========== -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal modal-lg">
+      <button class="modal-close" id="detailClose">&times;</button>
+      <div class="detail-content" id="detailContent">
+        <!-- 由 JS 动态渲染 -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
