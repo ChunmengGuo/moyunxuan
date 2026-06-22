@@ -328,11 +328,13 @@ img { max-width: 100%; display: block; }
 .work-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow); }
 
 .work-image {
-  width: 100%; height: 240px; object-fit: cover;
-  background: #eee; cursor: pointer;
+  width: 100%; height: 240px;
+  background-size: cover; background-position: center;
+  background-color: #eee; cursor: pointer;
+  position: relative; display: flex; align-items: center; justify-content: center;
 }
-
-.work-info { padding: 16px 20px 18px; }
+.work-image-placeholder { font-size: 48px; opacity: 0.5; }
+.work-image-wrap { width: 100%; }
 .work-info h4 { font-size: 17px; margin-bottom: 4px; }
 .work-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 6px; }
 .work-script {
@@ -488,7 +490,6 @@ img { max-width: 100%; display: block; }
 .review-excerpt { color: var(--ink-gray); font-size: 12px; }
 
 /* 作品卡片徽章 */
-.work-image { position: relative; }
 .work-script-badge { position: absolute; top: 10px; left: 10px; padding: 3px 10px; border-radius: 12px; background: rgba(44,44,44,0.75); color: white; font-size: 12px; }
 .work-reviewed { position: absolute; top: 10px; right: 10px; padding: 3px 8px; border-radius: 12px; background: rgba(90,122,74,0.85); color: white; font-size: 11px; }
 
@@ -665,4 +666,27 @@ img { max-width: 100%; display: block; }
 @media (min-width: 769px) and (max-width: 1024px) {
   .quick-cards { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 作品详情操作按钮 */
+.detail-actions { display: flex; gap: 10px; margin-top: 16px; }
+.mt-1 { margin-top: 8px; }
+
+/* 导师悬浮按钮 */
+.master-fab {
+  position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+  width: 50px; height: 50px; border-radius: 50%;
+  background: var(--ink-black); color: var(--rice-white);
+  border: 2px solid rgba(255,255,255,0.15);
+  font-size: 22px; cursor: pointer; box-shadow: 0 4px 16px var(--shadow-heavy);
+  transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
+}
+.master-fab:hover { background: var(--vermillion); transform: scale(1.1); }
+
+/* 笔画口诀表字体 */
+.stroke-shape { font-size: 2em; font-family: 'Noto Serif SC', serif; text-align: center; }
+
+/* 媒体查询补充 */
+@media (max-width: 768px) {
+  .master-fab { width: 44px; height: 44px; font-size: 18px; bottom: 16px; right: 16px; }
 }
