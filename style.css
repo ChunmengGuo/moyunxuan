@@ -429,7 +429,7 @@ img { max-width: 100%; display: block; }
   background: rgba(0,0,0,0.5); align-items: center; justify-content: center;
   padding: 20px; backdrop-filter: blur(2px);
 }
-.modal-overlay.open { display: flex; }
+.modal-overlay.active, .modal-overlay.open { display: flex; }
 
 .modal {
   background: var(--rice-light); border-radius: var(--radius-lg);
@@ -476,6 +476,174 @@ img { max-width: 100%; display: block; }
 .detail-script { color: var(--bamboo); font-weight: 600; }
 .detail-date { color: var(--ink-gray); }
 .detail-note { font-size: 14px; line-height: 1.8; margin-bottom: 20px; padding: 12px; background: rgba(255,255,255,0.5); border-radius: var(--radius); }
+
+.detail-header { display: flex; gap: 8px; justify-content: flex-end; margin-bottom: 12px; }
+.detail-tag { display: inline-block; padding: 2px 12px; border-radius: 12px; background: rgba(90,122,74,0.12); color: var(--bamboo); font-size: 13px; margin-right: 6px; }
+.detail-time { font-size: 12px; color: var(--ink-gray); margin-top: 8px; }
+.detail-body { margin-bottom: 20px; }
+
+/* 作品预览评论 */
+.work-preview-review { display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 13px; }
+.review-stars { font-size: 14px; }
+.review-excerpt { color: var(--ink-gray); font-size: 12px; }
+
+/* 作品卡片徽章 */
+.work-image { position: relative; }
+.work-script-badge { position: absolute; top: 10px; left: 10px; padding: 3px 10px; border-radius: 12px; background: rgba(44,44,44,0.75); color: white; font-size: 12px; }
+.work-reviewed { position: absolute; top: 10px; right: 10px; padding: 3px 8px; border-radius: 12px; background: rgba(90,122,74,0.85); color: white; font-size: 11px; }
+
+/* Toast 消息 */
+.toast {
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+  background: var(--ink-black); color: var(--rice-white); padding: 12px 24px;
+  border-radius: 8px; font-size: 14px; z-index: 999;
+  box-shadow: 0 4px 20px var(--shadow-heavy);
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.toast.show { opacity: 1; }
+
+/* 状态栏 */
+.status-bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--vermillion); color: white;
+  text-align: center; padding: 6px; font-size: 13px; z-index: 999;
+  transform: translateY(-100%); transition: transform 0.3s;
+}
+.status-bar.show { transform: translateY(0); }
+
+/* 导师点评区域 */
+.master-review-section { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.08); }
+.master-review-section h4 { font-family: var(--font-title); font-size: 20px; margin-bottom: 14px; }
+
+.review-box {
+  background: linear-gradient(135deg, rgba(194,58,43,0.04), rgba(90,122,74,0.04));
+  border: 1px solid rgba(194,58,43,0.12); border-radius: var(--radius);
+  padding: 16px; border-left: 3px solid var(--vermillion);
+}
+.review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.review-avatar { font-size: 28px; }
+.review-rating { display: block; font-size: 13px; }
+.review-time { font-size: 12px; color: var(--ink-gray); margin-left: auto; }
+.review-comment { font-size: 14px; line-height: 1.8; }
+
+/* 点评表单 */
+.review-form-section h4 { font-family: var(--font-title); font-size: 20px; margin-bottom: 16px; }
+.review-stars-input { display: flex; gap: 6px; margin-bottom: 12px; }
+.review-star { font-size: 28px; cursor: pointer; transition: transform 0.2s; }
+.review-star:hover { transform: scale(1.2); }
+
+/* 导师面板 */
+.master-panel { }
+.master-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.master-panel-header h3 { font-family: var(--font-title); font-size: 24px; }
+
+.master-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat-card { text-align: center; padding: 16px; background: white; border-radius: var(--radius); box-shadow: 0 2px 8px var(--shadow); }
+.stat-number { display: block; font-size: 32px; font-weight: 700; color: var(--vermillion); }
+.stat-label { font-size: 13px; color: var(--ink-gray); }
+
+.master-settings { background: white; border-radius: var(--radius); padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); }
+.master-settings h4 { font-size: 16px; margin-bottom: 12px; }
+
+.master-pending { margin-bottom: 20px; }
+.master-pending h4 { font-size: 16px; margin-bottom: 12px; }
+.pending-badge { display: inline-block; background: var(--vermillion); color: white; padding: 1px 8px; border-radius: 10px; font-size: 12px; }
+.pending-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: white; border-radius: var(--radius); margin-bottom: 6px; box-shadow: 0 1px 4px var(--shadow); cursor: pointer; transition: all 0.2s; }
+.pending-item:hover { border-left: 3px solid var(--vermillion); transform: translateX(2px); }
+.pending-title { flex: 1; font-size: 14px; }
+.pending-script { font-size: 12px; color: var(--bamboo); }
+.pending-date { font-size: 12px; color: var(--ink-gray); }
+.pending-action { font-size: 12px; color: var(--vermillion); }
+
+.master-reviewed h4 { font-size: 16px; margin-bottom: 12px; }
+.reviewed-item { display: flex; align-items: center; gap: 12px; padding: 8px 14px; background: white; border-radius: var(--radius); margin-bottom: 4px; box-shadow: 0 1px 4px var(--shadow); cursor: pointer; font-size: 14px; }
+
+/* 导师入口按钮 */
+.btn-master {
+  background: var(--ink-black); color: var(--rice-white);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 4px 16px var(--shadow-heavy);
+  font-size: 13px; padding: 10px 18px;
+}
+.btn-master:hover { background: var(--vermillion); }
+
+/* 学习详情内容样式 */
+.learn-detail-content { margin-top: 16px; }
+.learn-detail-content h4 { font-size: 17px; margin: 16px 0 8px; }
+.learn-detail-content p { font-size: 14px; line-height: 1.9; margin-bottom: 10px; }
+
+/* 文房四宝 */
+.tools-guide { display: flex; flex-direction: column; gap: 16px; }
+.tool-card { background: white; border-radius: var(--radius); padding: 16px; box-shadow: 0 1px 6px var(--shadow); }
+.tool-card h4 { font-family: var(--font-title); font-size: 18px; }
+.tool-tips { background: rgba(90,122,74,0.06); border-radius: var(--radius); padding: 10px 14px; margin-top: 8px; }
+.tool-tips ul { margin: 6px 0 0 16px; list-style: disc; }
+.tool-tips li { font-size: 13px; margin-bottom: 4px; }
+
+/* 执笔坐姿 */
+.posture-item { background: white; border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
+.posture-item h4 { color: var(--vermillion); }
+
+/* 笔画口诀表 */
+.strokes-tips { margin-bottom: 12px; }
+.strokes-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+.strokes-table th, .strokes-table td { padding: 10px 12px; border: 1px solid rgba(0,0,0,0.08); text-align: left; font-size: 14px; }
+.strokes-table th { background: var(--ink-black); color: var(--rice-white); font-weight: 600; }
+.strokes-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+.stroke-practice { background: rgba(90,122,74,0.06); border-radius: var(--radius); padding: 14px; }
+
+/* 楷书四大家 */
+.master-card { background: white; border-radius: var(--radius); padding: 16px; margin-bottom: 14px; box-shadow: 0 1px 6px var(--shadow); }
+.master-card h4 { font-size: 18px; }
+.master-era { font-size: 12px; color: var(--ink-gray); font-weight: normal; }
+.master-style { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 8px; background: rgba(194,58,43,0.08); color: var(--vermillion); margin-left: 6px; font-weight: normal; }
+.master-card ul { margin: 6px 0 8px 16px; list-style: disc; }
+.master-card li { font-size: 13px; margin-bottom: 4px; }
+.master-advice { background: rgba(90,122,74,0.06); border-radius: var(--radius); padding: 10px; font-size: 13px; }
+
+/* 行书技法 */
+.technique-card { background: white; border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
+.technique-card h4 { color: var(--vermillion); }
+.practice-tip { background: rgba(90,122,74,0.06); border-radius: var(--radius); padding: 8px 12px; margin-top: 8px; font-size: 13px; }
+
+/* 草书五阶 */
+.caoshu-stage { display: flex; gap: 14px; align-items: flex-start; background: white; border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
+.stage-badge { flex-shrink: 0; background: var(--vermillion); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+.caoshu-stage h4 { margin: 0 0 4px !important; }
+.caoshu-stage p { margin: 0 !important; font-size: 13px; }
+.caoshu-tips { background: rgba(90,122,74,0.06); border-radius: var(--radius); padding: 14px; margin-top: 10px; }
+
+/* 隶书技巧 */
+.lishu-tip { background: white; border-radius: var(--radius); padding: 12px; margin-bottom: 8px; }
+.lishu-tip h4 { color: var(--bamboo); margin: 0 0 4px !important; }
+.lishu-recommend { background: rgba(90,122,74,0.06); border-radius: var(--radius); padding: 10px; margin-top: 8px; font-size: 13px; }
+
+/* 篆书四要 */
+.zhuanshu-key { background: white; border-radius: var(--radius); padding: 12px; margin-bottom: 8px; }
+.zhuanshu-key h4 { color: var(--ink-dark); }
+.zhuanshu-recommend { background: rgba(90,122,74,0.06); border-radius: var(--radius); padding: 10px; margin-top: 8px; font-size: 13px; }
+
+/* 学习卡片等级标识 */
+.learn-card { position: relative; }
+.learn-card-icon { font-size: 36px; margin-bottom: 10px; }
+.learn-level { position: absolute; top: 12px; right: 12px; font-size: 11px; padding: 2px 8px; border-radius: 8px; }
+.level-入门 { background: rgba(90,122,74,0.12); color: var(--bamboo); }
+.level-进阶 { background: rgba(194,58,43,0.1); color: var(--vermillion); }
+.level-高阶 { background: rgba(184,134,11,0.12); color: var(--gold); }
+
+/* 工具区 */
+.data-tools h4 { font-family: var(--font-title); font-size: 18px; }
+
+/* 响应式补充 */
+@media (max-width: 768px) {
+  .master-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat-number { font-size: 24px; }
+  .stat-card { padding: 12px; }
+  .strokes-table { font-size: 12px; }
+  .strokes-table th, .strokes-table td { padding: 6px 8px; }
+  .caoshu-stage { flex-direction: column; }
+  .stage-badge { width: 40px; height: 40px; font-size: 12px; }
+}
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 768px) {
